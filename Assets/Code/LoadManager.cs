@@ -10,11 +10,16 @@ public class LoadManager : MonoBehaviour
     [SerializeField] private GameObject MainHero;
     [SerializeField] private List<Collider2D> lvls;
     [SerializeField] private  CinemachineConfiner CM;
-    private int currentLvl;
+    [SerializeField] private int currentLvl;
     [SerializeField] private float distanceBetweenLvls = 5f;
+    private int defineLvl;
 
     public static LoadManager instance = null; // Экземпляр объекта
 
+    public int DefineLvl
+    {
+        get { return defineLvl; }
+    }
     public int CurrentLvl
     {
         get { return currentLvl; }
@@ -43,6 +48,7 @@ public class LoadManager : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         currentLvl = 0;
+        defineLvl = 15;
     }
 
     public void LeftSceneLoad( )

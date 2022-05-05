@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5753684018661797862}
   - component: {fileID: 1918244257876938684}
   m_Layer: 0
-  m_Name: RedSlimProj
+  m_Name: FlyProj
   m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   owner: {fileID: 0}
-  damage: 4
+  damage: 2
 --- !u!50 &2127884810347889549
 Rigidbody2D:
   serializedVersion: 4

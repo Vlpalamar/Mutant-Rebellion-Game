@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241675294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.57, y: 0.56, z: 0}
+  m_LocalPosition: {x: 1.063, y: -0.024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3937714624234349784}
@@ -82,10 +82,10 @@ MonoBehaviour:
   damage: 4
   attackSpeed: 3
   distance: 3
-  speed: 3
+  speed: 1
   projectile: {fileID: 1981314106915088650, guid: e5c84b3caabe66f458c2aef7c258da7e,
     type: 3}
-  onLvl: 0
+  onLvl: 1
   shootPos: {fileID: 241675295}
 --- !u!212 &3937714624234349788
 SpriteRenderer:
@@ -191,10 +191,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.077157915, y: 0.58003426}
+  m_Offset: {x: 0.62524945, y: 0.0059580803}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 1, y: 0.5}
     oldSize: {x: 1.294126, y: 1.2882353}
     newSize: {x: 4.400028, y: 4.3799996}
     adaptiveTilingThreshold: 0.5
@@ -202,5 +202,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7244774, y: 1.1403503}
+  m_Size: {x: 0.79758966, y: 1.0905075}
   m_EdgeRadius: 0

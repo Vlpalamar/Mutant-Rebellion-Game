@@ -14,18 +14,20 @@ public class RedSlime : Enemy
         base.Start();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        print("anim.name");
         projectile.Damage = damage;
-        print(projectile.Damage);
         projectile.Owner = this.gameObject;
         readyForShoot = true;
     }
 
     public void Update()
     {
-        if(onLvl!=LoadManager.instance.CurrentLvl)
-
+        if (onLvl != LoadManager.instance.CurrentLvl)
+        {
+            Freeze();
             return;
+            
+        }
+      
        
 
         
@@ -75,8 +77,12 @@ public class RedSlime : Enemy
         readyForShoot = true;
     }
 
-   
 
-
-
+    protected override void Freeze()
+    {
+        rb.velocity = new Vector2(0, 0);
+        anim.speed = 1;
+        anim.SetBool("ReadyToAttack", false);
+       
+    }
 }

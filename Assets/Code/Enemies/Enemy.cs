@@ -22,6 +22,8 @@ public abstract class Enemy : MonoBehaviour
     {
         mainHero= GameObject.FindGameObjectWithTag("Player");
         print("!");
+        onLvl = (int )transform.position.x / LoadManager.instance.DefineLvl;
+     
     }
 
     protected bool Flip()
@@ -72,11 +74,24 @@ public abstract class Enemy : MonoBehaviour
 
     private void TakeDamage(float damage)
     {
-        health = health - damage;
-
+      
+        if (health-damage<=0)
+        {
+            Death();
+        }
+        else
+        {
+            health = health - damage;
+        }
     }
 
+    private void Death()
+    {
+        Destroy(this.gameObject);
+        print("Death");
+    }
 
-   
+    protected abstract void Freeze();
+
 
 }

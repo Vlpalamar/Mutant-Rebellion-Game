@@ -8,6 +8,8 @@ TagManager:
   - RBorder
   - Enemy
   - Projectile
+  - EnemyProjectile
+  - HealthUp
   layers:
   - Default
   - TransparentFX
