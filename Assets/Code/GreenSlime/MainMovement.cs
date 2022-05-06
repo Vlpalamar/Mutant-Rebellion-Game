@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMovement : MonoBehaviour
 {
@@ -30,23 +31,25 @@ public class MainMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [Tooltip("Как делаеко идет луч который проверяет землю под ногами  ")]
     [SerializeField] float JumpRayDist = 0.5f; // на сколько далеко идет луч который отвечает за прикосновение 
+    //-----------------------
 
+    //UI
+    [Header("UI")]
+    [SerializeField]private Image[] UISprites;
+    //-----------------------
     void Start()
     {
       
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        MoveButtonUp();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-            Jump();
-
+        anim.SetFloat("horizontalMove", Mathf.Abs(horizontalMove));
     }
 
 
@@ -57,15 +60,33 @@ public class MainMovement : MonoBehaviour
         rb.velocity = targetVelocity;
     }
 
-    void Move()
-    {
-        horizontalMove = 0;
+   
 
-        horizontalMove = Input.GetAxis("Horizontal");
-        anim.SetFloat("horizontalMove", Mathf.Abs(horizontalMove));
+    public void MoveLeftButtonDown(Image leftSprite)
+    {
+        leftSprite.color = new Color(leftSprite.color.r, leftSprite.color.g, leftSprite.color.b, 1);
+        horizontalMove = -1;
         Flip();
 
     }
+
+    public void MoveRightButtonDown(Image rightSprite)
+    {
+        rightSprite.color = new Color(rightSprite.color.r, rightSprite.color.g, rightSprite.color.b, 1);
+        horizontalMove = 1;
+        Flip();
+    }
+
+    public void MoveButtonUp( )
+    {
+        foreach (Image image in UISprites)
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0.3f);
+        }
+
+        horizontalMove = 0;
+    }
+
 
     void Flip()
     {
@@ -76,8 +97,10 @@ public class MainMovement : MonoBehaviour
 
     }
 
-    void Jump(float multiply = 1)
+    public void Jump(Image jumpSprite)
     {
+        float multiply = 1;
+        jumpSprite.color = new Color(jumpSprite.color.r, jumpSprite.color.g, jumpSprite.color.b, 1);
 
         CheckIsGrounded();
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackSystem : MonoBehaviour
 {
@@ -23,12 +24,16 @@ public class AttackSystem : MonoBehaviour
     void Update()
     {
         currentAttackCooldown -= Time.deltaTime;
-        if (Input.GetKey(KeyCode.X) && currentAttackCooldown<=0)
-            Attack();
+        //if (Input.GetKey(KeyCode.X) && currentAttackCooldown<=0)
+        //    Attack();
         
     }
-    private void Attack()
+    public void Attack(Image attackSprite)
     {
+        attackSprite.color = new Color(attackSprite.color.r, attackSprite.color.g, attackSprite.color.b, 1);
+        if (currentAttackCooldown > 0)
+            return;
+        
         currentAttackCooldown = attackCooldown;
         anim.SetTrigger("attack");
       

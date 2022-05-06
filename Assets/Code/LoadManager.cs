@@ -25,22 +25,26 @@ public class LoadManager : MonoBehaviour
         get { return currentLvl; }
     }
 
-    void Start()
+    void Awake()
     {
-       
-      
         if (instance == null)
         {
-           
-            instance = this; 
+
+            instance = this;
         }
         else if (instance == this)
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
 
         InitializeManager();
 
+    }
+    void Start()
+    {
+       
+      
+      
 
     }
 
