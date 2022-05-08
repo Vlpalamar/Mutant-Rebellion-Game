@@ -12,6 +12,7 @@ public class LoadManager : MonoBehaviour
     [SerializeField] private  CinemachineConfiner CM;
     [SerializeField] private int currentLvl;
     [SerializeField] private float distanceBetweenLvls = 5f;
+    [SerializeField] private GameObject _UI;
     private int defineLvl;
 
     public static LoadManager instance = null; // Экземпляр объекта
@@ -53,6 +54,7 @@ public class LoadManager : MonoBehaviour
         anim = GetComponent<Animator>();
         currentLvl = 0;
         defineLvl = 15;
+        
     }
 
     public void LeftSceneLoad( )

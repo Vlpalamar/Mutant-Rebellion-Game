@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -51,7 +52,7 @@ public class MainHealth : MonoBehaviour
 
         if (health - damage <= 0)
         {
-            Death();
+            StartDie();
             healthBar.value = 0;
         }
         else
@@ -61,10 +62,18 @@ public class MainHealth : MonoBehaviour
         }
     }
 
+    private void StartDie()
+    {
+        // анимация будет вызывать слудующую функцию 
+        Death();
+    }
+
     private void Death()
     {
-        print("Death");
+        //логика
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 
     private void TakeHeal(float addHealth)
     {
@@ -75,8 +84,8 @@ public class MainHealth : MonoBehaviour
         else
         {
             health += addHealth;
-            healthBar.value = health;
         }
+        healthBar.value = health;
     }
 
 

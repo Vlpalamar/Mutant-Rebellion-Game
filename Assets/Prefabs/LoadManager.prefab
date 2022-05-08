@@ -119,5 +119,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   CM: {fileID: 0}
+  currentLvl: 0
   distanceBetweenLvls: 7
+  _UI: {fileID: 0}
