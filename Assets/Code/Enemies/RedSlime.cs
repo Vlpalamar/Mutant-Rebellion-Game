@@ -21,7 +21,7 @@ public class RedSlime : Enemy
 
     public void Update()
     {
-        if (onLvl != LoadManager.instance.CurrentLvl)
+        if (onEp != LoadManager.instance.CurrentEps || onLvl!= LoadManager.instance.CurrentLvls)   
         {
             Freeze();
             return;

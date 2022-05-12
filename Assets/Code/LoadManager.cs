@@ -8,22 +8,37 @@ public class LoadManager : MonoBehaviour
 {
     private Animator anim;
     [SerializeField] private GameObject MainHero;
-    [SerializeField] private List<Collider2D> lvls;
+    [SerializeField] private List<Collider2D> eps;
+   
+
     [SerializeField] private  CinemachineConfiner CM;
-    [SerializeField] private int currentLvl;
-    [SerializeField] private float distanceBetweenLvls = 5f;
-    [SerializeField] private GameObject _UI;
+    [SerializeField] private int currentEps;
+    [SerializeField] private int currentLvls;
+    [SerializeField] private float distanceBetweenEps = 5f;
+    [SerializeField] private float distanceBetweenLvls = 10f;
+    [SerializeField] private float lvlPointXStart;
+    
+    
+   private int defineEp;
     private int defineLvl;
 
     public static LoadManager instance = null; // Экземпляр объекта
 
+    public int DefineEp
+    {
+        get { return defineEp; }
+    }
     public int DefineLvl
     {
         get { return defineLvl; }
     }
-    public int CurrentLvl
+    public int CurrentEps
     {
-        get { return currentLvl; }
+        get { return currentEps; }
+    }
+    public int CurrentLvls
+    {
+        get { return currentLvls; }
     }
 
     void Awake()
@@ -52,9 +67,11 @@ public class LoadManager : MonoBehaviour
     private void InitializeManager()
     {
         anim = GetComponent<Animator>();
-        currentLvl = 0;
-        defineLvl = 15;
-        
+        CM.m_BoundingShape2D = eps[currentEps];
+        defineEp = 15;
+        defineLvl = 10;
+
+
     }
 
     public void LeftSceneLoad( )
@@ -67,6 +84,11 @@ public class LoadManager : MonoBehaviour
         anim.Play("RightSceneLoad");
     }
 
+    public void NextSceneLoad()
+    {
+        anim.Play("NextSceneLoad"); // в аним ивенте NextLvl();
+    }
+
 
     public void EndLoad()
     {
@@ -75,19 +97,28 @@ public class LoadManager : MonoBehaviour
 
     public void LeftScene()
     {
-        MainHero.transform.position=  new Vector3(MainHero.transform.position.x-distanceBetweenLvls, MainHero.transform.position.y);
-        currentLvl--;
-        CM.m_BoundingShape2D = lvls[currentLvl];
+        MainHero.transform.position=  new Vector3(MainHero.transform.position.x-distanceBetweenEps, MainHero.transform.position.y);
+        currentEps--;
+        CM.m_BoundingShape2D = eps[currentEps];
         EndLoad();
         
     }
 
     public void RightScene()
     {
-        MainHero.transform.position = new Vector3(MainHero.transform.position.x + distanceBetweenLvls, MainHero.transform.position.y);
-        currentLvl++;
-        CM.m_BoundingShape2D = lvls[currentLvl];
+        MainHero.transform.position = new Vector3(MainHero.transform.position.x + distanceBetweenEps, MainHero.transform.position.y);
+        currentEps++;
+        CM.m_BoundingShape2D = eps[currentEps];
        
+        EndLoad();
+    }
+
+    public void NextLvl(int SceneIndex)
+    {
+        MainHero.transform.position = new Vector3(lvlPointXStart, MainHero.transform.position.y- distanceBetweenLvls);
+        currentEps = 0;
+        currentLvls++;
+        CM.m_BoundingShape2D = eps[SceneIndex];
         EndLoad();
     }
 }

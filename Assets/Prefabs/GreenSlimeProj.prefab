@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56438a58db02d84da0a885d3bf28a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 5
   owner: {fileID: 0}
   Ground:
     serializedVersion: 2

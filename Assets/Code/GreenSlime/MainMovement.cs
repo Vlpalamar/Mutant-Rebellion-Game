@@ -13,8 +13,9 @@ public class MainMovement : MonoBehaviour
     //references
     private Rigidbody2D rb;
     private SpriteRenderer sr;
-
     private Animator anim;
+
+    [SerializeField] private Joystick joystick;
     //-----------------------------
 
     //Move
@@ -49,6 +50,7 @@ public class MainMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        horizontalMove = joystick.Horizontal;
         anim.SetFloat("horizontalMove", Mathf.Abs(horizontalMove));
     }
 
@@ -58,24 +60,25 @@ public class MainMovement : MonoBehaviour
         targetVelocity.x = horizontalMove * Time.fixedDeltaTime * movementSpeed;
         targetVelocity.y = rb.velocity.y;
         rb.velocity = targetVelocity;
+        Flip();
     }
 
    
 
-    public void MoveLeftButtonDown(Image leftSprite)
-    {
-        leftSprite.color = new Color(leftSprite.color.r, leftSprite.color.g, leftSprite.color.b, 1);
-        horizontalMove = -1;
-        Flip();
+    //public void MoveLeftButtonDown(Image leftSprite)
+    //{
+    //    leftSprite.color = new Color(leftSprite.color.r, leftSprite.color.g, leftSprite.color.b, 1);
+    //    horizontalMove = -1;
+    //    Flip();
 
-    }
+    //}
 
-    public void MoveRightButtonDown(Image rightSprite)
-    {
-        rightSprite.color = new Color(rightSprite.color.r, rightSprite.color.g, rightSprite.color.b, 1);
-        horizontalMove = 1;
-        Flip();
-    }
+    //public void MoveRightButtonDown(Image rightSprite)
+    //{
+    //    rightSprite.color = new Color(rightSprite.color.r, rightSprite.color.g, rightSprite.color.b, 1);
+    //    horizontalMove = 1;
+    //    Flip();
+    //}
 
     public void MoveButtonUp( )
     {
@@ -133,6 +136,7 @@ public class MainMovement : MonoBehaviour
         {
             LoadManager.instance.LeftSceneLoad();
         }
+        
     }
 
 }

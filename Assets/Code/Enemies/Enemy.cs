@@ -10,6 +10,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected float distance;
     [SerializeField] protected float speed;
     [SerializeField] protected Projectile projectile;
+    [SerializeField] protected int onEp;
     [SerializeField] protected int onLvl;
     protected Animator anim;
     protected bool isRight;
@@ -21,9 +22,10 @@ public abstract class Enemy : MonoBehaviour
     public virtual void  Start()
     {
         mainHero= GameObject.FindGameObjectWithTag("Player");
-        print("!");
-        onLvl = (int )transform.position.x / LoadManager.instance.DefineLvl;
      
+        onEp = (int )transform.position.x / LoadManager.instance.DefineEp;
+        onLvl = (int)  Mathf.Abs(transform.position.y)/ LoadManager.instance.DefineLvl;
+
     }
 
     protected bool Flip()

@@ -10,6 +10,8 @@ TagManager:
   - Projectile
   - EnemyProjectile
   - HealthUp
+  - NextLvl
+  - ShieldUp
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,7 @@ public class Fly : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (onLvl != LoadManager.instance.CurrentLvl)
+        if (onEp != LoadManager.instance.CurrentEps || onLvl != LoadManager.instance.CurrentLvls)
         {
             Freeze();
             return;

@@ -11,12 +11,25 @@ public class MainHealth : MonoBehaviour
     [SerializeField] private float health;
     [SerializeField]private  Slider healthBar;
     [SerializeField] private float addHealth;
-    
+    private PurpleColbAbillity colb;
+
+    public float Health
+    {
+        get { return health; }
+        set
+        {
+            health = value;
+            healthBar.value = value;
+        }
+    }
+
+
     void Start()
     {
         healthBar.minValue = 0;
         healthBar.maxValue = health;
         healthBar.value = health;
+        colb = GetComponent<PurpleColbAbillity>();
     }
 
     // Update is called once per frame
@@ -47,8 +60,11 @@ public class MainHealth : MonoBehaviour
         }
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
+        if (colb.IsWorking)
+            return;
+        
 
         if (health - damage <= 0)
         {
