@@ -20,12 +20,7 @@ public class Leg : Enemy
     // Update is called once per frame
     void Update()
     {
-       
         Flip();
-
-
-      
-
     }
 
     void Attack()
@@ -35,7 +30,7 @@ public class Leg : Enemy
         Collider2D[] colliders= Physics2D.OverlapAreaAll(vA, vB);
         foreach (Collider2D col in colliders)
         {
-            if (col.CompareTag("Player"))
+            if (col.GetComponent<MainHealth>())
             {
                  col.gameObject.GetComponent<MainHealth>().TakeDamage(damage);
               

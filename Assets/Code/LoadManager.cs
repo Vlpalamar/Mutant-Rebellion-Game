@@ -45,7 +45,6 @@ public class LoadManager : MonoBehaviour
     {
         if (instance == null)
         {
-
             instance = this;
         }
         else if (instance == this)
@@ -113,7 +112,7 @@ public class LoadManager : MonoBehaviour
         EndLoad();
     }
 
-    public void NextLvl(int SceneIndex)
+    public void NexLvl(int SceneIndex)
     {
         MainHero.transform.position = new Vector3(lvlPointXStart, MainHero.transform.position.y- distanceBetweenLvls);
         currentEps = 0;

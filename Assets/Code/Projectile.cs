@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
     {
         rbRigidbody2D = GetComponent<Rigidbody2D>();
         rbRigidbody2D.velocity = transform.right * speed;
-        Destroy(this.gameObject,5);
+        Destroy(gameObject,5);
     }
 
    

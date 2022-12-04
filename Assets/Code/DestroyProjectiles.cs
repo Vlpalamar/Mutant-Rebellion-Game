@@ -6,7 +6,7 @@ public class DestroyProjectiles : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Projectile")|| other.CompareTag("EnemyProjectile"))
+        if (other.GetComponent<Projectile>())
         {
           Destroy(other.gameObject);
         }

@@ -55,16 +55,16 @@ public class PurpleColbAbillity : MonoBehaviour
         currentCooldown -= Time.fixedDeltaTime;
     }
 
-    public void OnPurpleButtonPressed(Image UseColbButton)
+    public void UseShield()
     {
-        UseColbButton.color = new Color(UseColbButton.color.r, UseColbButton.color.g, UseColbButton.color.b, 1);
+       
         if (amount<=0 || currentCooldown>0) return;
         currentCooldown = cooldown;
         amount--;
         isWorking = true;
         _Shield.SetActive(true);
         UI_potions[amount ].color = new Color(0, 0, 0, 0);
-        //редактируем UI
+      
     }
 
     private void AddAmount(int Add=1)

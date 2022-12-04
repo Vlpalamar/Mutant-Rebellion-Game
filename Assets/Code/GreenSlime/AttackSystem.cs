@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
 {
@@ -19,18 +16,14 @@ public class AttackSystem : MonoBehaviour
         projectile.Owner = this.gameObject;
     }
 
-   
-    // Update is called once per frame
+ 
     void Update()
     {
-        currentAttackCooldown -= Time.deltaTime;
-        //if (Input.GetKey(KeyCode.X) && currentAttackCooldown<=0)
-        //    Attack();
-        
+        currentAttackCooldown -= Time.deltaTime;      
     }
-    public void Attack(Image attackSprite)
+    public void Attack()
     {
-        attackSprite.color = new Color(attackSprite.color.r, attackSprite.color.g, attackSprite.color.b, 1);
+     
         if (currentAttackCooldown > 0)
             return;
         

@@ -32,7 +32,7 @@ public class NextLvl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.GetComponent<MainHealth>())
         {
             isClose = true;
             anim.SetBool("readyToNext", isClose);
@@ -42,7 +42,7 @@ public class NextLvl : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
 
-        if (other.CompareTag("Player"))
+        if (other.GetComponent<MainHealth>())
         {
             isClose = false;
             anim.SetBool("readyToNext", isClose);
